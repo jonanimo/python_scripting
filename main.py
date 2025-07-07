@@ -22,7 +22,7 @@ except:
 
 # Extract price
 try:
-    price = driver.find_element(By.CLASS_NAME, "a-offscreenfdsf").text.strip()
+    price = driver.find_element(By.CLASS_NAME, "a-offscreen").text.strip()
 except:
     price = "Price not found"
 

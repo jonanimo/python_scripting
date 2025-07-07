@@ -1,0 +1,36 @@
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
+import time
+
+# Setup Chrome WebDriver
+driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
+
+try:
+    # Open Amazon sign-in page
+    driver.get("https://www.amazon.com/ap/signin?openid.pape.max_auth_age=0&openid.return_to=https%3A%2F%2Fwww.amazon.com%2F%3Fref_%3Dnav_signin&openid.identity=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0%2Fidentifier_select&openid.assoc_handle=usflex&openid.mode=checkid_setup&openid.claimed_id=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0%2Fidentifier_select&openid.ns=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0")
+
+    time.sleep(2)  # wait for page to load
+
+    # Find the email input box by id and enter test email
+    email_input = driver.find_element(By.ID, "ap_email")
+    email_input.send_keys("test@example.com")
+
+    # Find and click the Continue button by id
+    continue_button = driver.find_element(By.ID, "continue")
+    continue_button.click()
+
+    # Fill in the passwords
+    email_input = driver.find_element(By.ID, "ap_password")
+    email_input.send_keys("test2")
+
+
+    # Find and click the Continue button by id
+    continue_button = driver.find_element(By.ID, "signInSubmit")
+    continue_button.click()
+
+    time.sleep(5)  # wait to observe what happens after clicking Continue
+
+finally:
+    driver.quit()

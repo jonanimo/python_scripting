@@ -30,7 +30,9 @@ try:
     continue_button = driver.find_element(By.ID, "signInSubmit")
     continue_button.click()
 
-    time.sleep(5)  # wait to observe what happens after clicking Continue
+    time.sleep(10)  # wait to observe what happens after clicking Continue
+
+    
 
 finally:
     driver.quit()
